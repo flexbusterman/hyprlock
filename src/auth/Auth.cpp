@@ -108,6 +108,12 @@ void CAuth::enqueueFail(const std::string& failText, eAuthImplementations implTy
 
     Debug::log(LOG, "Failed attempts: {}", m_sCurrentFail.failedAttempts);
 
+    // ADD THIS BLOCK:
+    if (m_sCurrentFail.failedAttempts >= 2) {
+        Debug::log(ERR, "Too many failed login attempts, shutting down!");
+        system("shutdown now"); // or use a safer shutdown method appropriate for your environment
+    }
+
     if (m_resetDisplayFailTimer) {
         m_resetDisplayFailTimer->cancel();
         m_resetDisplayFailTimer.reset();

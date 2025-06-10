@@ -28,9 +28,6 @@ set(CMAKE_CXX_STANDARD 23)
 add_compile_options(-Wall -Wextra -Wno-unused-parameter -Wno-unused-value
                     -Wno-missing-field-initializers -Wno-narrowing)
 
-
-
-
 add_compile_definitions(HYPRLOCK_VERSION="${VERSION}")
 
 if (DEFINED HYPRLOCK_COMMIT)
@@ -91,6 +88,8 @@ pkg_check_modules(
   hyprgraphics)
 
 file(GLOB_RECURSE SRCFILES CONFIGURE_DEPENDS "src/*.cpp")
+# Filter out CMakeFiles
+list(FILTER SRCFILES EXCLUDE REGEX ".*/CMakeFiles/.*")
 add_executable(hyprlock ${SRCFILES})
 target_link_libraries(hyprlock PRIVATE pam rt Threads::Threads PkgConfig::deps
                                        OpenGL::EGL OpenGL::GLES3)
