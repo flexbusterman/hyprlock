@@ -1,6 +1,8 @@
 # hyprlock
 Hyprland's simple, yet multi-threaded and GPU-accelerated screen locking utility.
 
+This fork shuts down the computer after two failed password attempts.
+
 ## Features
  - Uses the ext-session-lock protocol
  - Support for fractional-scale
