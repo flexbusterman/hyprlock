@@ -83,6 +83,7 @@ pkg_check_modules(
   pangocairo
   libdrm
   gbm
+  pam
   hyprutils>=0.5.0
   sdbus-c++>=2.0.0
   hyprgraphics)
